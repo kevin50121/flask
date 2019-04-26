@@ -1,0 +1,38 @@
+]aws elbv2 create-listener \
+--load-balancer-arn arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:loadbalancer/app/kevintest-flask/df08574f4ff74aab \
+--protocol HTTP \
+--port 8084 \
+--default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:targetgroup/flask/51e6fb09c1ce8a9b \
+| grep 'ListenerArn' | sed 's/*\"ListenerArn\"*$//g'
+
+
+
+# aws elbv2 create-listener \
+--load-balancer-arn arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:loadbalancer/app/kevintest-flask/df08574f4ff74aab \
+--protocol HTTP \
+--port 8084 \
+--default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:targetgroup/flask/51e6fb09c1ce8a9b \
+| grep 'ListenerArn' | sed 's/"ListenerArn": "//g' | sed 's/",//'
+
+# json output by # aws elbv2 create-listener \
+#--load-balancer-arn arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:loadbalancer/app/kevintest-flask/df08574f4ff74aab \
+#--protocol HTTP \
+#--port 8084 \
+#--default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:targetgroup/flask/51e6fb09c1ce8a9b
+{
+    "Listeners": [
+        {
+            "ListenerArn": "arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:listener/app/kevintest-flask/df08574f4ff74aab/784251a65d102ce5",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:loadbalancer/app/kevintest-flask/df08574f4ff74aab",
+            "Port": 8084,
+            "Protocol": "HTTP",
+            "DefaultActions": [
+                {
+                    "Type": "forward",
+                    "TargetGroupArn": "arn:aws:elasticloadbalancing:ap-southeast-1:990090895087:targetgroup/flask/51e6fb09c1ce8a9b"
+                }
+            ]
+        }
+    ]
+}
+
