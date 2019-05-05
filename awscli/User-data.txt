@@ -1,8 +1,0 @@
-#!/bin/bash
-# Create user-data.txt 
-# User-data.txt :
-sudo yum update -y
-sudo yum install -y ecs-init
-sudo service docker start
-sudo echo ECS_CLUSTER=kevin_onboardingtasks_flask >> /etc/ecs/ecs.config
-sudo start ecs
